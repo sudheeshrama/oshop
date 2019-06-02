@@ -14,7 +14,7 @@ import { RouterModule } from "@angular/router";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
 import { CustomFormsModule } from "ng2-validation";
-import { DataTableModule } from "angular-6-datatable";
+import { DataTableModule } from "angular5-data-table";
 
 import { AppComponent } from "./app.component";
 import { BsNavbarComponent } from "./bs-navbar/bs-navbar.component";
