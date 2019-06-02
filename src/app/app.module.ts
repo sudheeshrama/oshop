@@ -14,6 +14,7 @@ import { RouterModule } from "@angular/router";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
 import { CustomFormsModule } from "ng2-validation";
+import { DataTableModule } from "angular-6-datatable";
 
 import { AppComponent } from "./app.component";
 import { BsNavbarComponent } from "./bs-navbar/bs-navbar.component";
@@ -51,6 +52,7 @@ import { ProductFormComponent } from "./admin/product-form/product-form.componen
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule,
+    DataTableModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: "", component: HomeComponent },
@@ -73,15 +75,19 @@ import { ProductFormComponent } from "./admin/product-form/product-form.componen
         component: MyOrdersComponent,
         canActivate: [AuthGuard]
       },
-
-      {
-        path: "admin/products",
-        component: AdminProductsComponent,
-        canActivate: [AuthGuard, AmdinAuthGuard]
-      },
       {
         path: "admin/products/new",
         component: ProductFormComponent,
+        canActivate: [AuthGuard, AmdinAuthGuard]
+      },
+      {
+        path: "admin/products/:id",
+        component: ProductFormComponent,
+        canActivate: [AuthGuard, AmdinAuthGuard]
+      },
+      {
+        path: "admin/products",
+        component: AdminProductsComponent,
         canActivate: [AuthGuard, AmdinAuthGuard]
       },
       {
