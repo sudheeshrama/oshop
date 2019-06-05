@@ -8,7 +8,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ product.title }}</h5>
     <p class="card-text">
-      {{ product.price | currency: "USD":true }}
+      {{ product.price | currency: "USD" }}
     </p>
   </div>
   <div *ngIf="showActions && shoppingCart" class="card-footer">
