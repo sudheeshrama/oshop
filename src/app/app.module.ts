@@ -1,3 +1,4 @@
+import { ShoppingCartService } from "./shopping-cart.service";
 import { ProductService } from "src/app/product.service";
 import { CategoryService } from "./category.service";
 import { AmdinAuthGuard } from "./amdin-auth-guard.service";
@@ -28,8 +29,8 @@ import { AdminProductsComponent } from "./admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
 import { LoginComponent } from "./login/login.component";
 import { ProductFormComponent } from "./admin/product-form/product-form.component";
-import { ProductFilterComponent } from './products/product-filter/product-filter.component';
-import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductFilterComponent } from "./products/product-filter/product-filter.component";
+import { ProductCardComponent } from "./product-card/product-card.component";
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     UserService,
     AmdinAuthGuard,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
