@@ -2,7 +2,7 @@ import { Product } from "./product";
 import { ShoppingCartItem } from "./shopping-cart-item";
 export class ShoppingCart {
   items: ShoppingCartItem[] = [];
-  constructor(public itemsMap: { [productId: string]: ShoppingCartItem }) {
+  constructor(private itemsMap: { [productId: string]: ShoppingCartItem }) {
     this.itemsMap = itemsMap || {};
 
     for (let productId in itemsMap) {
