@@ -19,9 +19,6 @@ export class ShoppingCartService {
 
   async getCart(): Promise<Observable<ShoppingCart>> {
     let cartId = await this.getOrCreateCartId();
-    // return this.db
-    //   .object("/shopping-carts/" + cartId).valueChanges()
-    //   .map(x => new ShoppingCart(x.items));
 
     return this.db
       .object("/shopping-carts/" + cartId)
@@ -43,14 +40,14 @@ export class ShoppingCartService {
   }
 
   async addToCart(product: Product) {
-    this.updateItemQuantity(product, 1);
+    this.updateItem(product, 1);
   }
 
   async removeFromCart(product: Product) {
-    this.updateItemQuantity(product, -1);
+    this.updateItem(product, -1);
   }
 
-  private async updateItemQuantity(product: Product, change: number) {
+  private async updateItem(product: Product, change: number) {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, product.key);
 
@@ -60,10 +57,18 @@ export class ShoppingCartService {
       .subscribe(item => {
         if (item.payload.exists()) {
           item$.update({
+            title: product.title,
+            imageUrl: product.imageUrl,
+            price: product.price,
             quantity: item.payload.exportVal().quantity + change
           });
         } else {
-          item$.update({ product: product, quantity: 1 });
+          item$.update({
+            title: product.title,
+            imageUrl: product.imageUrl,
+            price: product.price,
+            quantity: 1
+          });
         }
       });
   }
